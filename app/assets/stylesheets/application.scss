@@ -20,12 +20,12 @@
       display: flex;
       align-items: center;
 
-      .side-header__box{
+      &__box{
         width:100%;
         
                   
 
-        .side-header__box__user-name{
+        &__user-name{
           font-size:16px;
           font-weight: bold;
           float: left;
@@ -56,13 +56,13 @@
           margin-bottom: 40px;
           color: white;
           
-          .group__group-name{
+          &group-name{
             font-size: 15px;
             margin-bottom: 5px;
 
           }
 
-          .group__latest-message{
+          &latest-message{
             font-size: 11px;
 
           }
@@ -89,18 +89,18 @@
       background-color:white;
       border-bottom: solid 1px #eee;
 
-      .main-header__left-box{
+      &__left-box{
         margin-top: 35px;
 
 
-        .main-header__left-box__current-group{
+        &__current-group{
           font-size: 20px;
           color: #333;
           margin-bottom: 15px;
 
         }
 
-        .main-header__left-box__member-list{
+        &__member-list{
           display: flex;
           font-size: 12px;
           color: #999999;
@@ -131,17 +131,17 @@
       .message{
         padding-bottom: 40px;
 
-        .message__upper-info{
+        &__upper-info{
           display: flex;
           margin-bottom: 10px;
 
-          .message__upper-info__talker{
+          &__talker{
             color: #434a54;
             font-size: 16px;
             font-weight: bold;
 
           }
-          .message__upper-info__date{
+          &__date{
             color: #999999;
             font-size: 12px;
             margin-left: 10px;
@@ -151,7 +151,7 @@
 
         }
 
-        .message__text{
+        &__text{
           color: #434a54;
           font-size: 14px;
           margin-bottom: 10px;
@@ -182,7 +182,7 @@
         width: 100%;
   
 
-        .form__message{
+        &__message{
           height: 50px;
           width: 100%;
           padding: 0 40px 0 10px;
@@ -191,9 +191,9 @@
         
 
         }
-        .form__mask{
+        &__mask{
           
-          .form__mask__image{
+          &__image{
             font-size: 1.3rem;
             position: absolute;
             top: 10px;
@@ -212,7 +212,7 @@
 
         }
 
-        .form__submit{
+        &__submit{
           width: 100px;
           height: 50px;
           padding: 0 30px;
