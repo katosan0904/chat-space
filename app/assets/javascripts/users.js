@@ -19,12 +19,10 @@ function appendErrMsgToHTML(msg){
 }
 
 function addgroup(nameVariable,idVariable){
-var user_name = nameVariable
-var user_id = idVariable
 var html=`<div class='chat-group-user'>
-<input name='group[user_ids][]' type='hidden' value=${user_id}>
-<p class='chat-group-user__name'>"${user_name}"</p>
-<div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn' data-user-id=${user_id}>削除</div>
+<input name='group[user_ids][]' type='hidden' value=${idVariable}>
+<p class='chat-group-user__name'>"${nameVariable}"</p>
+<div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn' data-user-id=${idVariable}>削除</div>
 </div>`
 $(".chat-group-users").append(html);
 }
@@ -67,13 +65,13 @@ $(".chat-group-users").append(html);
       
   })
   $(document).on("click", ".user-search-add", function(){
-    var idVariable = $(this).attr('data-user-id');
-    var nameVariable = $(this).attr('data-user-name');
+    var idVariable = $(this).data('user-id');
+    var nameVariable = $(this).data('user-name');
     $(`.user-search-add[data-user-id=${idVariable}]`).parent().empty();
     addgroup(nameVariable,idVariable);
 });
   $(document).on("click", ".user-search-remove", function(){
-    var id = $(this).attr('data-user-id');
+    var id = $(this).data('user-id');
     $(`.user-search-remove[data-user-id=${id}]`).parent().empty();
   });
 
