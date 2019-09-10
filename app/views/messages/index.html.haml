@@ -16,8 +16,7 @@
           %li.member
             メンバー名
       .right-header
-        .right-header__button
-          Edit
+        %input.right-header__button{type: "submit", value: "Edit",onclick:"location.href='edit'"} 
     .messages
       = render @messages
 

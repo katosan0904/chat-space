@@ -3,19 +3,26 @@ class GroupsController < ApplicationController
 def index
 end
 
-  def new
-    @group = Group.new
-    @group.users << current_user
-  end
+def edit
+@group = Group.find(params[:id]) 
+@members = @group.users 
+end
 
-  def create
+
+def new
+@group = Group.new
+@group.users << current_user
+end
+
+def create
     @group = Group.new(group_params)
+    # binding.pry
     if @group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
       render :new
     end
-  end
+end
 
   def update
     if @group.update(group_params)
