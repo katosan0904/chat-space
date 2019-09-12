@@ -2,7 +2,7 @@ $(function(){
   if (document.URL.match("/messages")) {
     function buildHTML(message){
     var content= message.content? message.content :""
-    var image= message.image? `<img src=${message.image.url}  class="lower-message__image" ></img>` :`<div class="no-image"></div>`
+    var image= message.image? `<img src=${message.image.url}  class="lower-message__image" ,data-id='${message.id}></img>` :`<div class="no-image",data-id='${message.id}></div>`
 
       var html = `<div class="message" data-id='${message.id}'>
         <div class="upper-message">

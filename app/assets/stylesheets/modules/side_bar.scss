@@ -33,19 +33,25 @@
     height: calc(100vh - 100px);
     padding: 0 20px;
 
+
     .group {
       box-sizing: border-box;
       padding: 20px 0 40px;
-
-      &__name {
-        color: $white;
-        font-size: $side_group_name;
+      
+      .atagg{
+        text-decoration: none;
       }
-      &__message {
-        color: $white;
-        font-size: $side_group_message;
-        margin-top: 5px;
-      }
+        &__name {
+          color: $white;
+          font-size: $side_group_name;
+      
+        }
+        &__message {
+          color: $white;
+          font-size: $side_group_message;
+          margin-top: 5px;
+      
+        }
     }
   }
 }

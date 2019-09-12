@@ -6,15 +6,13 @@
     .header
       .left-header
         .left-header__title
-          グループ名
+          =@group.name
         %ul.left-header__members
-          Member：
-          %li.member
-            メンバー名
-          %li.member
-            メンバー名
-          %li.member
-            メンバー名
+          member:
+          - @group.users.each do |group|
+            %li.member
+              =group.name
+
       .right-header
         %input.right-header__button{type: "submit", value: "Edit",onclick:"location.href='edit'"} 
     .messages
