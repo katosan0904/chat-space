@@ -67,12 +67,12 @@ $(".list").append(html);
   $(document).on("click", ".user-search-add", function(){
     var idVariable = $(this).data('user-id');
     var nameVariable = $(this).data('user-name');
-    $(`.user-search-add[data-user-id=${idVariable}]`).parent().empty();
+    $(`.user-search-add[data-user-id=${idVariable}]`).parent().remove();
     addgroup(nameVariable,idVariable);
 });
   $(document).on("click", ".user-search-remove", function(){
     var id = $(this).data('user-id');
-    $(`.user-search-remove[data-user-id=${id}]`).parent().empty();
+    $(`.user-search-remove[data-user-id=${id}]`).parent().remove();
   });
 
 });
