@@ -1,8 +1,9 @@
 $(function(){
-  if (document.URL.match("/messages")) {
+  
+
     function buildHTML(message){
     var content= message.content? message.content :""
-    var image= message.image? `<img src=${message.image.url}  class="lower-message__image" ,data-id='${message.id}></img>` :`<div class="no-image",data-id='${message.id}></div>`
+    var image= message.image? `<img src='${message.image}' width="256" height="256" class="lower-message__image" data-id=${message.id}></img>` :`<div class="no-image",data-id='${message.id}'></div>`
 
       var html = `<div class="message" data-id='${message.id}'>
         <div class="upper-message">
@@ -13,15 +14,16 @@ $(function(){
             ${message.date}
           </div>
         </div>
-        <div class="lower-message">
+        <div class="lower-message" data-id='${message.id}'>
         <p class='lower-message__content' data-id=${message.id}>
             ${content}
-          </p>
-          ${image}
+          </p>      
+          ${image}   
         </div>
       </div>`
       
     return html;
+    
   };
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -33,7 +35,8 @@ $(function(){
       data: message,
       dataType: 'json',
       processData: false,
-      contentType:false
+      contentType:false,
+      
     })
 
     .done(function(message){
@@ -46,24 +49,26 @@ $(function(){
     
     
     
-    .fail(function(data){
+    .fail(function(){
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
-    .always(function(data){
+    .always(function(){
       $("input[type='submit']").attr('disabled', false);
   })
-
+   
 
   })
 
   var reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-   var id = $('.lower-message__content:last').data('id');
+    if (document.URL.match("/messages")) {
+   var id = $('.lower-message:last').data('id');
    last_message_id = id
    
+
       $.ajax({
       //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
-      url: 'api/messages' ,
+      url: 'api/messages#index {:format=>"json"}' ,
       //ルーティングで設定した通りhttpメソッドをgetに指定
       type: "GET",
       dataType: "json",
@@ -71,6 +76,7 @@ $(function(){
       data: {id: last_message_id}
     }) 
     .done(function(messages) {
+      console.log(last_message_id)
       var insertHTML = '';
        (messages).forEach(function(message){
       var html=buildHTML(message)
@@ -83,8 +89,9 @@ $(function(){
     
     .fail(function() {
       alert('error');
-    });
+    }); 
   }
-  setInterval(reloadMessages, 5000);
 };
+setInterval(reloadMessages, 5000);
+ 
 });
